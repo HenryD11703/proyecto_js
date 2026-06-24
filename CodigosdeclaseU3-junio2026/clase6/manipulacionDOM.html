@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .titulo {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="titulo">Esto es un titulo grado 1</h1>
+    <h2 class="titulo">Esto es un titulo grado 2</h2>
+    <h3 class="titulo">Esto es un titulo grado 3</h3>
+    <p id="parrafo">Esto es un parrafo 1</p>
+
+    <h1 class="titulo">Esto es un titulo grado 1</h1>
+    <div>
+        <p>Hola soy un parrafo</p>
+    </div>
+    <div>
+        <h1>Hola soy un titulo</h1>
+    </div>
+    
+    <script>
+        console.log("Seleccionando por ID")
+        const parrafo = document.getElementById("parrafo"); // devuelve 1 solo elemento siempre
+        console.log(parrafo);
+        console.log("Seleccionando por clase")
+        const titulos = document.getElementsByClassName("titulo"); // devuelve un grupo de elementos - HTML Collection
+        console.log(titulos);
+        for (let e of titulos){
+            console.log(e)
+        }
+        console.log("Seleccionando por etiqueta");
+        const etiquetash1 = document.getElementsByTagName("h1"); // devuelve un grupo de elementos - HTML Collection
+        console.log(etiquetash1)
+        for (let e of etiquetash1){
+            console.log(e)
+        }
+        console.log("Seleccionando por selector")
+        const elementosdiv = document.querySelector("div"); // querySelector devuelve el primer elemento que encuentre
+        // querySelectorAll devuelve todos los elementos que coincidan con el selector
+        console.log(elementosdiv);
+        
+        //document.write("Hola a todos")
+    </script>
+</body>
+</html>

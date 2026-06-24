@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <p>Hola</p>
+    <template id="plantilla">
+        <h1>Pokemon</h1>
+        <p id="nombre"></p>
+        <p id="nivel"></p>
+    </template>
+
+    <tarjeta-pokemon nombre="Pikachu" nivel="20"></tarjeta-pokemon>
+    <tarjeta-pokemon nombre="Odish" nivel="30"></tarjeta-pokemon>
+
+    <script>
+        class PokemonTarjeta extends HTMLElement {
+            constructor(){
+                super();
+            }
+
+            connectedCallback(){
+                const shadow = this.attachShadow({mode: "open"});
+
+                const plantilla = document.getElementById("plantilla");
+                const clon = plantilla.content.cloneNode(true);
+
+                const style = document.createElement("style");
+                style.textContent = `
+                    p {
+                        color: red;
+                        font-weight: bold;
+                    }
+                `;
+
+                const nombre = this.getAttribute("nombre")
+                const nivel = this.getAttribute("nivel")
+
+                clon.querySelector("#nombre").textContent = nombre;
+                clon.querySelector("#nivel").textContent = nivel;
+
+                shadow.append(style, clon)
+            }
+        }
+        
+        customElements.define("tarjeta-pokemon",PokemonTarjeta);
+    </script>
+</body>
+</html>

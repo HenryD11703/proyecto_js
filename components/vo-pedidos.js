@@ -39,7 +39,7 @@ class VoPedidos extends HTMLElement {
         const platillo = StorageHelper.get('vo_platillos').find(p => p.codigo === codigo);
         if(platillo) {
             this.platillosSeleccionados.push({
-                ...platillo, // Copia todas las propiedades del platillo original
+                ...platillo,
                 cantidad,
                 subtotal: platillo.precio * cantidad
             });
@@ -51,7 +51,6 @@ class VoPedidos extends HTMLElement {
     renderPlatillosTemp() {
         const tbody = this.querySelector('#tabla-pedidos-temp');
         
-        // Sumar todos los subtotales de forma muy limpia
         const total = this.platillosSeleccionados.reduce((sum, p) => sum + p.subtotal, 0);
         
         tbody.innerHTML = this.platillosSeleccionados.map((plat, i) => `
@@ -75,14 +74,12 @@ class VoPedidos extends HTMLElement {
         let inventario = StorageHelper.get('vo_insumos');
         let insumosNecesarios = {};
 
-        // Calcular la cantidad total de ingredientes que necesita todo el pedido
         this.platillosSeleccionados.forEach(platillo => {
             platillo.ingredientes.forEach(ing => {
                 insumosNecesarios[ing.codigo] = (insumosNecesarios[ing.codigo] || 0) + (ing.cantidad * platillo.cantidad);
             });
         });
 
-        // Verificar si alcanza el inventario para todos los insumos necesarios
         for (let codigo in insumosNecesarios) {
             let insumo = inventario.find(i => i.codigo === codigo);
             if (!insumo) { alert(`Error: Insumo ${codigo} no encontrado.`); return false; }
@@ -92,7 +89,6 @@ class VoPedidos extends HTMLElement {
             }
         }
 
-        // Si sí alcanzó, descontar del inventario y guardarlo
         inventario.forEach(i => { if(insumosNecesarios[i.codigo]) i.cantidad -= insumosNecesarios[i.codigo]; });
         StorageHelper.save('vo_insumos', inventario);
         document.dispatchEvent(new Event('inventarioActualizado'));

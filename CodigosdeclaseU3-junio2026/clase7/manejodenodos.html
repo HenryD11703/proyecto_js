@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="caja">
+        <h1 id="titulo">Titulo</h1>
+        <h2 id="titulo2">Titulo 2</h2>
+        <h3 id="titulo3">Titulo 3</h3>
+    </div>
+
+    <script>
+        const caja = document.getElementById("caja");
+        const parrafo = document.createElement("p");
+        const titulo = document.getElementById("titulo");
+        const titulo2 = document.getElementById("titulo2");
+        const titulo3 = document.getElementById("titulo3");
+        console.log(parrafo)
+        parrafo.textContent = "Hola soy un parrafo";
+        // document.body.appendChild(parrafo); // Agregar un hijo (al final)
+        //caja.appendChild(parrafo);
+        caja.insertBefore(parrafo, caja.firstChild);
+        caja.removeChild(titulo2);
+
+        const parrafo2 = document.createElement("p");
+        parrafo2.textContent = "Este es el parrafo 2";
+
+        //caja.replaceChild(parrafo2, titulo3);
+        //caja.replaceChildren(parrafo2)
+        caja.replaceWith(parrafo2);
+
+        
+        
+    </script>
+</body>
+</html>

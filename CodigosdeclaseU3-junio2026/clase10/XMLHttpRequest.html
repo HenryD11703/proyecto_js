@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="productos"></div>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://fakestoreapi.com/products");
+
+        xhr.onload = function(){
+            if (xhr.status === 200){
+                const contenedorProductos = document.getElementById("productos");
+                const productos = JSON.parse(xhr.responseText);
+                // title, image, price
+                productos.forEach(pro => {
+                    contenedorProductos.innerHTML += `
+                        <div>
+                            <h3>${pro.title}</h3>
+                            <img src="${pro.image}" width="80px">
+                            <p>$${pro.price}</p>
+                        </div>
+                    `
+                })
+            }else{
+                console.log("Error")
+            }
+        }
+
+        xhr.send();
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <p class="parrafos" style="color: blue;">Esto es un parrafo</p>
+
+    <script>
+        const parrafo = document.querySelector("p");
+        console.log(parrafo)
+        const clase = parrafo.getAttribute("class");
+        console.log(clase)
+        const estilos = parrafo.getAttribute("style")
+        console.log(estilos)
+        parrafo.setAttribute("style", "color: red;")
+        const atributos = parrafo.getAttributeNames();
+        console.log(atributos);
+        parrafo.removeAttribute("style");
+        // toggleAttribute
+    </script>
+</body>
+</html>

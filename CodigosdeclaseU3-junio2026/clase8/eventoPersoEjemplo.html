@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #contenedor-padre {
+            padding: 20px;
+            border: 3px solid black;
+        }
+
+        #contenedor-hijo {
+            padding: 20px;
+            border: 3px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor-padre">
+        <div id="contenedor-hijo">
+            <button id="btn-registrar">Registrar usuario</button>
+        </div>
+    </div>
+    <p id="salida"></p>
+    <script>
+        const btn = document.getElementById("btn-registrar");
+        const salida = document.getElementById("salida");
+
+        const padre = document.getElementById("contenedor-padre");
+
+        padre.addEventListener("usuarioRegistrado", (e)=>{
+            salida.innerText += `\nContenedor Padre esuchó el evento de registro de ${e.detail.nombre}`;
+        });
+
+        document.addEventListener("usuarioRegistrado", (e)=>{
+            salida.innerText += `\nEl DOM esuchó el evento de registro de ${e.detail.nombre}`;
+        });
+
+        btn.addEventListener("click", ()=>{
+            const evento = new CustomEvent("usuarioRegistrado", {
+                detail: {
+                    nombre: "Lesli"
+                },
+                bubbles: false,
+            });
+
+            btn.dispatchEvent(evento)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" onkeyup="mostrarTexto(this.value)">
+    <button onclick="saludar()">Saludar</button>
+    <p id="salida"></p>
+    <script>
+        function mostrarTexto(texto){
+            document.getElementById("salida").textContent = texto;
+        }
+
+        function saludar(){
+            document.getElementById("salida").textContent = "Hola bienvenidos a eventos!!!"
+        }
+    </script>
+</body>
+</html>

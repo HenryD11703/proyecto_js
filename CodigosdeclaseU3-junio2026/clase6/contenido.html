@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="parrafo">Esto es un párrafo</p>
+    <ol id="campers">
+
+    </ol>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>nombre</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpo-tabla">
+
+        </tbody>
+    </table>
+    <script>
+        const parrafo = document.getElementById("parrafo");
+        const nombreNodo = parrafo.nodeName;
+        console.log(nombreNodo)
+        const contenidoTexto = parrafo.textContent;
+        console.log(contenidoTexto);
+        parrafo.textContent = "<span>Esto es un contenido nuevo para el párrafo</span>";
+        const lista = document.getElementById("campers");
+        lista.innerHTML = "<li>Luis</li><li>Randolh</li>";
+
+        const campers = [
+            {nombre: "Luis", ID: "1234"},
+            {nombre: "Lesli", ID: "5678"},
+            {nombre: "Henry", ID: "4321"},
+            {nombre: "Stefanny", ID: "6666"}
+        ];
+        const cuerpoTabla = document.getElementById("cuerpo-tabla");
+        campers.forEach(c => {
+            let fila = `<tr><th>${c.ID}</th><th>${c.nombre}</th></tr>`;
+            cuerpoTabla.innerHTML += fila;
+        });
+    </script>
+</body>
+</html>

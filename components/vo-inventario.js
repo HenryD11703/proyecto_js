@@ -12,7 +12,6 @@ class VoInventario extends HTMLElement {
             this.guardarInsumo();
         });
 
-        // Delegación de eventos: un solo listener para toda la tabla
         this.querySelector('#tabla-insumos').addEventListener('click', (e) => {
             if(e.target.classList.contains('btn-eliminar')) {
                 this.eliminarInsumo(e.target.dataset.codigo);
@@ -55,7 +54,6 @@ class VoInventario extends HTMLElement {
     renderTabla() {
         const insumos = StorageHelper.get('vo_insumos');
         
-        // Usar map() y join() en lugar de ciclos for para pintar HTML es la forma moderna y más limpia
         this.querySelector('#tabla-insumos').innerHTML = insumos.length === 0 
             ? `<tr><td colspan="6">No hay insumos registrados.</td></tr>`
             : insumos.map(i => `

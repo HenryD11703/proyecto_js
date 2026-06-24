@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #caja{
+            width: 250px;
+            height: 250px;
+            border: 5px solid black;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="entrada">
+    <p id="mensaje"></p>
+    <hr>
+    <div id="caja">
+        
+    </div>
+    <p id="mensaje2"></p>
+    <script>
+        const entrada = document.getElementById("entrada");
+        const mensaje = document.getElementById("mensaje");
+
+        entrada.addEventListener("keydown", function(e){
+            mensaje.textContent = "Se presionó " +e.key;
+        })
+        entrada.addEventListener("keyup", function(e){
+            mensaje.textContent = "Se soltó " +e.key;
+        })
+        
+        
+        
+        
+        const caja = document.getElementById("caja");
+        const mensaje2 = document.getElementById("mensaje2");
+
+        caja.addEventListener("mousemove", function(e){ 
+            mensaje2.innerText = `X: ${e.offsetX} | Y: ${e.offsetY}`
+        })
+    </script>
+</body>
+</html>

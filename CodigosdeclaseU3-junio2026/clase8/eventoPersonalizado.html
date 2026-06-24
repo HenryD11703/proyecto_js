@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn-enviar">Enviar info</button>
+    <p id="salida"></p>
+
+    <script>
+        const salida = document.getElementById("salida");
+
+        document.addEventListener("infoEnviada", (e) => {
+            //const nombre = e.detail.nombre;
+            //const cantidad = e.detail.cantidadSesiones;
+            const {nombre, cantidadSesiones} = e.detail;
+            salida.innerText = `Se envió información ${nombre} ${cantidadSesiones}`;
+        })
+
+        const btn = document.getElementById("btn-enviar");
+
+        btn.addEventListener("click", () => {
+            const eventoNuevo = new CustomEvent("infoEnviada",
+                {
+                    detail: {
+                        nombre: "JavaScript",
+                        cantidadSesiones: 10
+                    }
+                });
+            document.dispatchEvent(eventoNuevo);
+        })
+    </script>
+</body>
+
+</html>
+
+
+boton.addEventListener("click", () => {
+    document.dispatchEvent(evento)
+})
+
+document.addEventListener("infoEnviada", mostramosMensaje);
+document.addEventListener("infoEnviada", guardaInfo);
+document.addEventListener("infoEnviada", consultamosBD);
+document.addEventListener("infoEnviada", actualizamosSesion);

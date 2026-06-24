@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <camper-component nombre="Lesli"></camper-component>
+    <camper-component nombre="Henry"></camper-component>
+    <camper-component nombre="Victor"></camper-component>
+
+    <script>
+        class miComponente extends HTMLElement{
+            constructor(){
+                super();                
+            }
+
+            connectedCallback(){
+                this.textContent = "Hola soy un "+ this.getAttribute("nombre") +"!";
+            }
+        }
+
+        customElements.define("camper-component", miComponente);
+
+        const componente = document.createElement("camper-component");
+        componente.setAttribute("nombre", "Juan")
+        document.body.append(componente)
+    </script>
+</body>
+</html>

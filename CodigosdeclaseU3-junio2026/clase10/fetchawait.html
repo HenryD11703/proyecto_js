@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="productos"></div>
+    <script>
+        async function loadProducts() {
+            // Ejemplo cabeceras (Alan)
+            const headers = new Headers();
+            headers.set("X-Api-Key", "kn7DrCOn0rCs3bxhCPDKOzwdpJOHEkeI52De6X9o");
+            const options = {
+                method: "GET",
+                headers: headers
+            }
+            const url = new URL("https://fakestoreapi.com/products");
+            const response = await fetch(url, options);
+            const products = await response.json();
+            const contenedorProductos = document.getElementById("productos");
+            products.forEach(pro => {
+                const div = document.createElement("div");
+                const titulo  = document.createElement("h3");
+                const imagen = document.createElement("img")
+                const precio = document.createElement("p")
+                titulo.textContent = pro.title;
+                imagen.setAttribute("src", pro.image)
+                imagen.setAttribute("width", "80px")
+                precio.textContent = "$"+pro.price;
+
+                div.appendChild(titulo);
+                div.appendChild(imagen);
+                div.appendChild(precio);
+
+                contenedorProductos.appendChild(div);
+            })
+        };
+
+        loadProducts();
+
+    </script>
+</body>
+
+</html>
