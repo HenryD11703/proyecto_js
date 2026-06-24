@@ -1,10 +1,10 @@
-# Proyecto Restaurante Vegano 🌱
+# Proyecto Restaurante Vegano
 
 Bienvenido a la documentación de tu proyecto **Restaurante Vegano**. Este documento está diseñado para ser tu guía de estudio. Si alguna vez te preguntas *"¿qué hace esta parte del código?"* o *"¿cómo se conecta esto con esto otro?"*, aquí encontrarás la respuesta explicada de forma clara y sencilla, con un enfoque especial en la lógica de JavaScript.
 
 ---
 
-## 🏗️ Arquitectura General del Proyecto
+## Arquitectura General del Proyecto
 
 Tu aplicación está construida usando **Vanilla JavaScript** (JavaScript puro, sin librerías externas), HTML5 y CSS3. La arquitectura se basa en tres pilares principales que aprendiste en clase:
 
@@ -14,7 +14,7 @@ Tu aplicación está construida usando **Vanilla JavaScript** (JavaScript puro, 
 
 ---
 
-## 🗂️ Explicación Archivo por Archivo (El Corazón de JS)
+## Explicación Archivo por Archivo (El Corazón de JS)
 
 ### 1. `storage.js` (El Gestor de Datos)
 Este archivo es tu puente hacia la memoria del navegador. Aquí se creó un objeto literal llamado `StorageHelper`.
@@ -45,7 +45,7 @@ Un Web Component te permite crear tus propias etiquetas HTML (por ejemplo, `<vo-
 
 ---
 
-## 🔍 Entendiendo la Lógica Compleja de los Componentes
+## Entendiendo la Lógica Compleja de los Componentes
 
 ### A. Gestión de Inventario (`vo-inventario.js`)
 Aquí se registra la materia prima.
@@ -69,7 +69,7 @@ Aquí es donde la aplicación brilla y conecta todo.
 
 ---
 
-## 🔌 El Patrón de los Eventos Personalizados (La Comunicación)
+## El Patrón de los Eventos Personalizados (La Comunicación)
 Notarás que en varias partes del código (cuando guardas o borras algo) aparece esta línea:
 \`\`\`javascript
 document.dispatchEvent(new Event('inventarioActualizado'));
@@ -80,7 +80,7 @@ Cualquier archivo que esté "escuchando" (`document.addEventListener('inventario
 
 ---
 
-## 🚀 Resumen Final para tu Defensa
+## Resumen Final para tu Defensa
 Si en tu presentación te preguntan:
 - **¿Cómo se guardan los datos?** -> *"A través de LocalStorage, utilizando JSON.stringify para persistir los arreglos y JSON.parse para recuperarlos".*
 - **¿Cómo actualizas la interfaz?** -> *"Utilizando Web Components para mantener todo ordenado, inyectando el HTML dinámico con Template Literals y `.map()`, y disparando Eventos para que todo reaccione en tiempo real."*
